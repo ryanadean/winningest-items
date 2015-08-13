@@ -2,6 +2,7 @@
 
 error_reporting(E_ALL);
 
+include '../vendor/autoload.php';
 define('APP_PATH', realpath('..'));
 
 try {
