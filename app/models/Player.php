@@ -55,7 +55,7 @@ class Player extends \Phalcon\Mvc\Model
      *
      * @var string
      */
-    public $verofy_key;
+    public $verify_key;
 
     /**
      * Returns table name mapped in the model.
