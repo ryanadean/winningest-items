@@ -7,7 +7,7 @@ class ItemSet extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $item_set_id;
+    public $item_set_id; 
 
     /**
      *
@@ -66,11 +66,7 @@ class ItemSet extends \Phalcon\Mvc\Model
         $this->hasMany("item_set_block_id", "ItemSetBlock", "item_set_block_id");
         $this->hasManyToMany(
             "item_set_id",
-            "HighestMatchupWinLossSkills",
-            "item_set_id",
             "HighestMatchupWinLossItems",
-            "item_set_id",
-            "HighestWinLossSkills",
             "item_set_id",
             "HighestWinLossItems",
             "item_set_id"
