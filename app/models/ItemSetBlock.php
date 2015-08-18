@@ -5,6 +5,12 @@ class ItemSetBlock extends \Phalcon\Mvc\Model
     
     /**
      *
+     * @var integer
+     */
+    public $item_set_block_id;
+    
+    /**
+     *
      * @var string
      */
 	public $type;
@@ -41,8 +47,7 @@ class ItemSetBlock extends \Phalcon\Mvc\Model
     
     /**
      *
-     * @var ItemSetBlockItem[]
+     * @var integer
      */	
-	public $items;
+	public $item_set_block_item_id;
 }
-?>
