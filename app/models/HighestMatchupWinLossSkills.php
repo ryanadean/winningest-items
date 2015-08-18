@@ -12,7 +12,7 @@ class HighestMatchupWinLossSkills extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $item_set_id;
+    public $skill_set_id;
 
     /**
      * Update all champions' highest w/l matchup skill sets
@@ -58,6 +58,6 @@ class HighestMatchupWinLossSkills extends \Phalcon\Mvc\Model
 
     public function initialize()
     {
-        $this->hasOne("item_set_id", "ItemSet", "item_set_id");
+        $this->hasOne("skill_set_id", "SkillSet", "skill_set_id");
     }
 }
