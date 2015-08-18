@@ -12,6 +12,18 @@ class HighestOverallWinLossItems extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
+    public $spell_1;
+
+    /**
+     * 
+     * @var integer
+     */
+    public $spell_2; 
+
+    /**
+     *
+     * @var integer
+     */
     public $item_set_id;
 
     /**
