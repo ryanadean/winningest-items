@@ -1,6 +1,6 @@
 <?php
 
-class HighestWinLossItems extends \Phalcon\Mvc\Model
+class HighestOverallWinLossItems extends \Phalcon\Mvc\Model
 {
     /**
      *
