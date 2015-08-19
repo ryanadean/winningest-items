@@ -7,10 +7,13 @@ class ChampionController extends ControllerBase
     {
     }
 
-    public function championAction($champion_name)
+    public function updateAction($champion_name)
+    {
+    }    
+
+    public function pageAction($champion_name)
     {
         print($champion_name);
-    }    
-    
+    }  
 }
 
