@@ -40,12 +40,7 @@ class ChampionController extends ControllerBase
                 )
             );
 
-            print("Inserted: ");
-            print($champion->id);
-            print(" ");
-            print($champion_name);
-            print("<br>");
-
+            print("Inserted: " . $champion->id . " " . $champion_name . "<br>");
         }
 
     }    
