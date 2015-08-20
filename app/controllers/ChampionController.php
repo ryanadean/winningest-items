@@ -15,6 +15,10 @@ class ChampionController extends ControllerBase
         $api = new Api($key);
         $champions = $api->staticData()->getChampions();
 
+        // Create transaction
+        $manager = new \Phalcon\Mvc\Model\Transaction\Manager();
+        $transaction = $manager->get();
+
         // Insert champion id and champion name into MySQL
         foreach($champions as $champion)
         {
@@ -27,6 +31,7 @@ class ChampionController extends ControllerBase
 
             // Insert champion id and name
             $new_champion = new Champion();
+            $new_champion->setTransaction($transaction);
             $new_champion->save(
                 array(
                     "champion_id" => $champion->id,
@@ -36,6 +41,8 @@ class ChampionController extends ControllerBase
 
             print("Inserted: " . $champion->id . " " . $champion_name . "<br>");
         }
+
+        $transaction->commit();
 
     }    
 
