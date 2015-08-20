@@ -1,21 +1,21 @@
-<h1>Hello</h1>
-
+<h1>Winningest Item Sets!</h1>
 <h2>Choose Champion:</h2>
-<table class="champion-index">
+
+<div class="grid-container outline" >
     {% set n = 1 %}
-    <tr>
     {% for champion in champions %}
-        <td valign="top">
-            <div class="champion-name">
-                {{ link_to('../champion/page/' ~ champion , '<img src=/imgs/champions/' ~ champion ~ '.png alt=' ~ champion ~'/>')}}
-            </div>
-            <div class="champion-name">
-                {{ link_to('../champion/page/' ~ champion , champion)}}
-            </div>
-        </td>
-        {% if (n % 6) == 0 %}
-            </tr><tr>
+        {% if n == 1 %}
+            <div class="row">
         {% endif %}
+        <div class="col-1">
+            {{ link_to('../champion/page/' ~ champion , '<img src=/imgs/champions/' ~ champion ~ '.png alt=' ~ champion ~' width="90%" height="50%"/>')}}
+            <br>
+            {{ link_to('../champion/page/' ~ champion , '<p>' ~ champion ~ '</p>' )}}
+        </div>
         {% set n = n+1 %}
+        {% if n == 11 %}
+            </div>
+            {% set n = 1 %}
+        {% endif %}
     {% endfor %}
-</table>
+</div>
