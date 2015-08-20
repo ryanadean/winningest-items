@@ -12,7 +12,7 @@ class IndexController extends ControllerBase
         // Make array for champion list
         $champions = array();
         // Get all champions in database
-        $results = $connection->fetchAll("SELECT * FROM champion");
+        $results = $connection->fetchAll("SELECT * FROM champion ORDER BY champion_name;");
 
         // Push each champion onto array
         foreach($results as $result){
