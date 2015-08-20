@@ -1,0 +1,64 @@
+h1{
+    text-align: center;
+    font-weight: bold;
+    color: black;
+}
+
+h2{
+    text-align: center;
+    font-weight: bold;
+    color: black;
+}
+
+p{
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+.grid-container{
+    width: 100%; 
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+/*-- our cleafix hack -- */ 
+.row:before, 
+.row:after {
+    content:"";
+      display: table ;
+    clear:both;
+}
+
+[class*='col-'] {
+    float: left; 
+    min-height: 1px; 
+    width: 16.66%; 
+    /*-- our gutter -- */
+    padding: 3px; 
+    background-color: black;
+    text-align: center;
+}
+
+.col-1{ width: 10%; }
+.col-1:hover{-webkit-box-shadow: inset 0px 0px 196px -31px rgba(214,214,214,0.65);
+-moz-box-shadow: inset 0px 0px 196px -31px rgba(214,214,214,0.65);
+box-shadow: inset 0px 0px 196px -31px rgba(214,214,214,0.65);}
+.col-2{ width: 33.33%; }
+.col-3{ width: 50%;    }
+.col-4{ width: 66.66%; }
+.col-5{ width: 83.33%; }
+.col-6{ width: 100%;   }
+
+.outline, .outline{
+    outline: 4px solid #666666; 
+}
+
+/*-- some extra column content styling --*/
+[class*='col-'] > p {
+    background-color: #FFC2C2; 
+    padding: 0;
+    margin: 0;
+    text-align: center; 
+    color: white; 
+}
