@@ -14,6 +14,8 @@ class ChampionController extends ControllerBase
         // Connect to database
         $config = new Phalcon\Config\Adapter\Php("champion.php");
         $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config->database->toArray());
+        // Clear champion table to make way for updated list
+        $connection->execute('TRUNCATE TABLE champion;');
 
         // Connect to Riot Api and get champion data
         $key = '';
