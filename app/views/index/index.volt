@@ -7,7 +7,7 @@
     {% for champion in champions %}
         <td valign="top">
             <div class="champion-name">
-                {{ link_to('../champion/page/' ~ champion , '<img src=/imgs/champions/' ~ champion ~ '.png alt=' ~ champion ~'/>"')}}
+                {{ link_to('../champion/page/' ~ champion , '<img src=/imgs/champions/' ~ champion ~ '.png alt=' ~ champion ~'/>')}}
             </div>
             <div class="champion-name">
                 {{ link_to('../champion/page/' ~ champion , champion)}}
