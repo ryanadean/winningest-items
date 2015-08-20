@@ -16,7 +16,7 @@ class ChampionController extends ControllerBase
         $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config->database->toArray());
 
         // Connect to Riot Api and get champion data
-        $key = 'c7b81d50-420a-44d4-bfa3-fa97e86c0c0a';
+        $key = '';
         $api = new Api($key);
         $champions = $api->staticData()->getChampions();
 
