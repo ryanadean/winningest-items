@@ -10,12 +10,6 @@ class ChampionController extends ControllerBase
 
     public function updateAction()
     {
-        // Clear champion table to make way for updated list
-        foreach( Champion::find() as $row)
-        {
-            $row->delete();
-        }
-
         // Connect to Riot Api and get champion data
         $key = '';
         $api = new Api($key);
