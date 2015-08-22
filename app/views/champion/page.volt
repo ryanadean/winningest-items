@@ -6,33 +6,61 @@
 <br>
 
 <table class="table-width">
-    <thead>
+        <thead>
         <tr>
-            <th>Overall Build Order</th>
-            <th>Overall Skill Order</th>
+            <th></th>
+            <th>Combined Set Option ({{champion}} vs *)</th>
         </tr>
     </thead>
     <tbody>
+        <?= $this->tag->form("../set/create") ?> 
         <tr>
-            <td>{{champion}}</td>
-            <td>{{champion}}</td>
+             <td></td>
+             <td>
+                 <?php echo $this->tag->selectStatic(
+                     array(
+                         "status",
+                         $option_list
+                     )
+                 ); ?>
+             </td>
+             <td>
+                <?= $this->tag->submitButton("Create!") ?>
+             </td>
         </tr>
+        <?= $this->tag->endForm() ?>
     </tbody>
-</table>
+    <thead>
+        <tr>
+            <th>Item Set Option ({{champion}} vs *)</th>
+            <th>Skill Set Option ({{champion}} vs *)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?= $this->tag->form("../set/create") ?> 
+        <tr>
+             <td>
+                 <?php echo $this->tag->selectStatic(
+                     array(
+                         "status",
+                         $option_list
+                     )
+                 ); ?>
+             </td>
+             <td>
+                 <?php echo $this->tag->selectStatic(
+                     array(
+                         "status",
+                         $option_list
+                     )
+                 ); ?>
+             </td> 
+             <td>
+                <?= $this->tag->submitButton("Create!") ?>
+             </td>
+        </tr>
+        <?= $this->tag->endForm() ?>
+    </tbody>
 
+</table>
 <br>
-
-<table class="table-width">
-    <thead>
-        <tr>
-            <th>Matchup Build Order</th>
-            <th>Matchup Skill Order</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{champion}}</td>
-            <td>{{champion}}</td>
-        </tr>
-    </tbody>
-</table>

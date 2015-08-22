@@ -14,7 +14,7 @@
             {{ link_to('../champion/page/' ~ champion , '<p>' ~ champion ~ '</p>' )}}
         </div>
         {% set n = n+1 %}
-        {% if n == 11 %}
+        {% if n == 14 %}
             </div>
             {% set n = 1 %}
         {% endif %}
