@@ -13,22 +13,18 @@
         </tr>
     </thead>
     <tbody>
-        <?= $this->tag->form("../set/create") ?> 
+        {{ form("../champion/get/", "method": "get", "id": "form") }} 
         <tr>
              <td></td>
              <td>
-                 <?php echo $this->tag->selectStatic(
-                     array(
-                         "status",
-                         $option_list
-                     )
-                 ); ?>
+                 <?php echo $this->tag->selectStatic(array("combined_set", $option_list)) ?>
              </td>
              <td>
-                <?= $this->tag->submitButton("Create!") ?>
+                 {{ submit_button("Create!", "id": "submit") }} 
+                 <div id="loading" style="display:none;"><img src="/imgs/loading.gif" alt="" /></div>
              </td>
         </tr>
-        <?= $this->tag->endForm() ?>
+        {{ endForm()}}
     </tbody>
     <thead>
         <tr>
@@ -37,30 +33,29 @@
         </tr>
     </thead>
     <tbody>
-        <?= $this->tag->form("../set/create") ?> 
+        {{ form("../champion/get/", "method": "get", "id": "form") }} 
         <tr>
              <td>
-                 <?php echo $this->tag->selectStatic(
-                     array(
-                         "status",
-                         $option_list
-                     )
-                 ); ?>
+                 <?php echo $this->tag->selectStatic(array("item_set",$option_list)); ?>
              </td>
              <td>
-                 <?php echo $this->tag->selectStatic(
-                     array(
-                         "status",
-                         $option_list
-                     )
-                 ); ?>
+                 <?php echo $this->tag->selectStatic(array("skill_set",$option_list)); ?>
              </td> 
              <td>
-                <?= $this->tag->submitButton("Create!") ?>
+                 {{ submit_button("Create!", "id": "submit") }} 
              </td>
         </tr>
-        <?= $this->tag->endForm() ?>
+        {{ endForm()}}
     </tbody>
 
 </table>
-<br>
+
+<!-- Replaces submit button with loading gif -->
+<script type="text/javascript">
+(function (d) {
+  d.getElementById('form').onsubmit = function () {
+    d.getElementById('submit').style.display = 'none';
+    d.getElementById('loading').style.display = 'block';
+  };
+}(document));
+</script>

@@ -9,6 +9,11 @@ class ChampionController extends ControllerBase
         $this->response->redirect('../');
     }
 
+    public function getAction()
+    {
+        sleep(5);
+    }
+
     public function updateAction()
     {
         // Connect to Riot Api and get champion data
