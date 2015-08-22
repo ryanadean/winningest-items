@@ -6,6 +6,7 @@ class ChampionController extends ControllerBase
 {
     public function indexAction()
     {
+        $this->response->redirect('../');
     }
 
     public function updateAction()
@@ -48,7 +49,23 @@ class ChampionController extends ControllerBase
 
     public function pageAction($champion_name)
     {
-        print($champion_name);
+        // Get list of champions
+        $results = Champion::find(
+            array(
+                "columns" => "champion_name",
+                "conditions" => "champion_name = '" . $champion_name . "'"
+            )
+        );
+
+        // If valid champion name, show page.  If not then redirect to home
+        if (count($results) == 1)
+        {
+            $this->view->setVar('champion', $champion_name);
+        }
+        else
+        {
+            $this->response->redirect('../');
+        }
     }  
 }
 
