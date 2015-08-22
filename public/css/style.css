@@ -1,13 +1,24 @@
-h1{
-    text-align: center;
-    font-weight: bold;
-    color: black;
+html {overflow-y: scroll;}
+
+a:link{
+    text-decoration: none;
 }
 
-h2{
+body{
+    background-image: url("../imgs/background.png")
+}
+
+.main-header{
     text-align: center;
     font-weight: bold;
     color: black;
+    font-size: 40px;
+}
+
+.tip-header{
+    text-align: center;
+    color: black;
+    font-size: 30px;
 }
 
 p{
@@ -15,6 +26,8 @@ p{
     font-weight: bold;
     color: white;
 }
+
+/*-- grid system help by j4n.co/blog/Creating-your-own-css-grid-system --*/
 .grid-container{
     width: 100%; 
     max-width: 75%;
@@ -36,27 +49,39 @@ p{
     width: 16.66%; 
     /*-- our gutter -- */
     padding: 3px; 
-    background-color: black;
+    background-color: #000000;
     text-align: center;
 }
 
-.col-1{ width: 10%; }
-.col-1:hover{-webkit-box-shadow: inset 0px 0px 196px -31px rgba(214,214,214,0.65);
--moz-box-shadow: inset 0px 0px 196px -31px rgba(214,214,214,0.65);
-box-shadow: inset 0px 0px 196px -31px rgba(214,214,214,0.65);}
+/** transitions by designshack.net/articles/css/joshuajohnson-2 **/
+.col-1{ 
+    width: 10%;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    -ms-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+.col-1:hover{
+    -webkit-box-shadow: inset 0px 0px 196px -31px rgba(214,214,214,0.65);
+    -moz-box-shadow: inset 0px 0px 196px -31px rgba(214,214,214,0.65);
+    box-shadow: inset 0px 0px 196px -31px rgba(214,214,214,0.65);
+    border-radius: 10px;
+    -webkit-transform: rotate(7.5deg);
+    -moz-transform: rotate(7.5deg);
+    -o-transform: rotate(7.5deg);
+    -ms-transform: rotate(7.5deg);
+    transform: rotate(7.5deg);
+}
 .col-2{ width: 33.33%; }
 .col-3{ width: 50%;    }
 .col-4{ width: 66.66%; }
 .col-5{ width: 83.33%; }
 .col-6{ width: 100%;   }
 
-.outline, .outline{
-    outline: 4px solid #666666; 
-}
-
 /*-- some extra column content styling --*/
 [class*='col-'] > p {
-    background-color: #FFC2C2; 
+    background-color: #000000; 
     padding: 0;
     margin: 0;
     text-align: center; 

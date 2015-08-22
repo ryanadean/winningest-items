@@ -1,7 +1,8 @@
-<h1>Winningest Item Sets!</h1>
-<h2>Choose Champion:</h2>
-
-<div class="grid-container outline" >
+<br>
+<div class="main-header"><a href="/">Winningest Item/Skill Sets!</a></div>
+<div class="tip-header">(Use your browser's find function + Esc + Enter to quickly select)</div>
+<br>
+<div class="grid-container" >
     {% set n = 1 %}
     {% for champion in champions %}
         {% if n == 1 %}
