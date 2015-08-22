@@ -49,18 +49,33 @@ class ChampionController extends ControllerBase
 
     public function pageAction($champion_name)
     {
-        // Get list of champions
-        $results = Champion::find(
+        // TODO: Check if vulnerable to SQL Injection O_o
+        // Try to find if $chamion_name exists in our list of champions
+        $champion_exists= Champion::find(
             array(
                 "columns" => "champion_name",
                 "conditions" => "champion_name = '" . $champion_name . "'"
             )
         );
 
+        // Make array for option selection list, prepending the "Overall" option
+        $option_list = Champion::find(array("columns" => "champion_name", "order" => "champion_name"))->toArray();
+        array_unshift($option_list, array("champion_name" => "Overall"));
+        $option_list = array_values($option_list);
+
+        // Make associative array with all keys == values for dropdown list
+        $combined_list = array();
+        foreach($option_list as $option)
+        {
+            array_push($combined_list, $option["champion_name"]);
+        }
+        $combined_list = array_combine($combined_list, $combined_list);
+
         // If valid champion name, show page.  If not then redirect to home
-        if (count($results) == 1)
+        if (count($champion_exists) == 1)
         {
             $this->view->setVar('champion', $champion_name);
+            $this->view->setVar('option_list', $combined_list);
         }
         else
         {
