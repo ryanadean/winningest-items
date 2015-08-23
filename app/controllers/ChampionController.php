@@ -9,7 +9,7 @@ class ChampionController extends ControllerBase
         $this->response->redirect('../');
     }
 
-    public function setAction()
+    public function getSetAction()
     {
         sleep(1);
     }
@@ -35,6 +35,9 @@ class ChampionController extends ControllerBase
             $champion_name = $champion->name; 
             $champion_name = str_replace($to_remove, $to_replace, $champion_name);
 
+            // Make directory to hold each champions' item/skill sets
+            mkdir("sets/" . $champion_name, 0664);
+
             // Insert champion id and name
             $new_champion = new Champion();
             $new_champion->setTransaction($transaction);
@@ -54,7 +57,6 @@ class ChampionController extends ControllerBase
 
     public function pageAction($champion_name)
     {
-        // TODO: Check if vulnerable to SQL Injection O_o
         // Try to find if $chamion_name exists in our list of champions
         $champion_exists= Champion::find(
             array(
