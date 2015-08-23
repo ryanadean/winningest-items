@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-        {{ form("../set/get/", "method": "get", "id": "form") }} 
+        {{ form("../set/get/" ~ champion , "method": "post", "id": "form") }} 
         <tr>
              <td>
                  <?php echo $this->tag->selectStatic(array("item_set",$option_list)); ?>
@@ -49,7 +49,7 @@
         </tr>
     </thead>
     <tbody>
-        {{ form("../set/get/", "method": "get", "id": "form_combined") }} 
+        {{ form("../set/get/" ~ champion, "method": "post", "id": "form_combined") }} 
         <tr>
              <td></td>
              <td></td>
@@ -68,7 +68,7 @@
     </tbody>
 </table>
 
-<br><br>
+<hr>
 
 <table class="table-width" id="download_set" style="visibility: hidden;">
     <tbody>
@@ -77,11 +77,13 @@
             <td></td>
             <td>
                 <textarea rows="10" cols="50" onclick="this.focus();this.select()" readonly="readonly">
-example text
+                    <?php print(var_dump($data)) ?>
+                    {% for content in data %}
+                    {% endfor%}
                 </textarea>
             </td>
             <td width="200">
-                <input type="button" value="Download!" /> 
+                <form method="get" action="../../sets/test.json"><button type="submit">Download!</button></form>
             </td>
         </tr>
     </tbody>
