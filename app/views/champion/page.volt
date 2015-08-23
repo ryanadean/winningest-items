@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-        {{ form("../champion/set/", "method": "get", "id": "form") }} 
+        {{ form("../champion/getset/", "method": "get", "id": "form") }} 
         <tr>
              <td>
                  <?php echo $this->tag->selectStatic(array("item_set",$option_list)); ?>
@@ -49,7 +49,7 @@
         </tr>
     </thead>
     <tbody>
-        {{ form("../champion/set/", "method": "get", "id": "form_combined") }} 
+        {{ form("../champion/getset/", "method": "get", "id": "form_combined") }} 
         <tr>
              <td></td>
              <td></td>
@@ -66,20 +66,42 @@
         </tr>
         {{ endForm()}}
     </tbody>
-
 </table>
+
+<br><br>
+
+<table class="table-width" id="download_set" style="visibility: hidden;">
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <textarea rows="10" cols="50" onclick="this.focus();this.select()" readonly="readonly">
+example text
+                </textarea>
+            </td>
+            <td width="200">
+                <input type="button" value="Download!" /> 
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 <!-- Replaces submit button with loading gif -->
 <script type="text/javascript">
 (function (d) {
   d.getElementById('form').onsubmit = function () {
     d.getElementById('submit').style.display = 'none';
     d.getElementById('loading').style.display = 'block';
+    d.getElementById('download_set').style.visibility= 'visible';
   };
 
   d.getElementById('form_combined').onsubmit = function () {
     d.getElementById('submit_combined').style.display = 'none';
     d.getElementById('loading_combined').style.display = 'block';
+    d.getElementById('download_set').style.visibility= 'visible';
   };
+
 }
 (document));
 </script>
