@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-        {{ form("../champion/getset/", "method": "get", "id": "form") }} 
+        {{ form("../set/get/", "method": "get", "id": "form") }} 
         <tr>
              <td>
                  <?php echo $this->tag->selectStatic(array("item_set",$option_list)); ?>
@@ -49,7 +49,7 @@
         </tr>
     </thead>
     <tbody>
-        {{ form("../champion/getset/", "method": "get", "id": "form_combined") }} 
+        {{ form("../set/get/", "method": "get", "id": "form_combined") }} 
         <tr>
              <td></td>
              <td></td>
@@ -88,6 +88,7 @@ example text
 </table>
 
 <!-- Replaces submit button with loading gif -->
+<!-- Shows copy/paste textbox and download button -->
 <script type="text/javascript">
 (function (d) {
   d.getElementById('form').onsubmit = function () {
