@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-        {{ form("../champion/get/", "method": "get", "id": "form") }} 
+        {{ form("../champion/set/", "method": "get", "id": "form") }} 
         <tr>
              <td>
                  <?php echo $this->tag->selectStatic(array("item_set",$option_list)); ?>
@@ -31,6 +31,7 @@
              </td>
              <td width="200">
                  {{ submit_button("Create!", "id": "submit") }} 
+                 <div id="loading" style="display:none;"><img src="/imgs/loading.gif" alt="" /></div>
              </td>
         </tr>
         {{ endForm()}}
@@ -48,18 +49,19 @@
         </tr>
     </thead>
     <tbody>
-        {{ form("../champion/get/", "method": "get", "id": "form") }} 
+        {{ form("../champion/set/", "method": "get", "id": "form_combined") }} 
         <tr>
              <td></td>
              <td></td>
              <td>
-                 <?php echo $this->tag->selectStatic(array("skill_set",$option_list)); ?>
+                 <?php echo $this->tag->selectStatic(array("combined_set",$option_list)); ?>
              </td> 
              <td width="50">
                  <img src="/imgs/arrow.png" width=30px height=30px alt="" />
              </td>
              <td width="200">
-                 {{ submit_button("Create!", "id": "submit") }} 
+                 {{ submit_button("Create!", "id": "submit_combined") }} 
+                 <div id="loading_combined" style="display:none;"><img src="/imgs/loading.gif" alt="" /></div>
              </td>
         </tr>
         {{ endForm()}}
@@ -73,5 +75,11 @@
     d.getElementById('submit').style.display = 'none';
     d.getElementById('loading').style.display = 'block';
   };
-}(document));
+
+  d.getElementById('form_combined').onsubmit = function () {
+    d.getElementById('submit_combined').style.display = 'none';
+    d.getElementById('loading_combined').style.display = 'block';
+  };
+}
+(document));
 </script>

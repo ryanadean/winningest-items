@@ -9,9 +9,9 @@ class ChampionController extends ControllerBase
         $this->response->redirect('../');
     }
 
-    public function getAction()
+    public function setAction()
     {
-        sleep(5);
+        sleep(1);
     }
 
     public function updateAction()
