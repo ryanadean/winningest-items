@@ -70,6 +70,23 @@
 
 <hr>
 
+<table class="table-width" id="download_set" style="visibility: visible;">
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <textarea rows="10" cols="50" onclick="this.focus();this.select()" readonly="readonly">
+                    {{json_content}}
+                </textarea>
+            </td>
+            <td width="200">
+                <form method="get" action="{{set_location}}"><button type="submit">Download!</button></form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 <!-- Replaces submit button with loading gif -->
 <!-- Shows copy/paste textbox and download button -->
 <script type="text/javascript">
@@ -77,11 +94,13 @@
   d.getElementById('form').onsubmit = function () {
     d.getElementById('submit').style.display = 'none';
     d.getElementById('loading').style.display = 'block';
+    d.getElementById('download_set').style.visibility= 'visible';
   };
 
   d.getElementById('form_combined').onsubmit = function () {
     d.getElementById('submit_combined').style.display = 'none';
     d.getElementById('loading_combined').style.display = 'block';
+    d.getElementById('download_set').style.visibility= 'visible';
   };
 
 }

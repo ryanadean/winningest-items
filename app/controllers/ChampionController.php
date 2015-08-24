@@ -89,5 +89,57 @@ class ChampionController extends ControllerBase
             $this->response->redirect('../');
         }
     }  
+
+    public function setAction($champion_name, $set_location, $json_data)
+    {
+        // Try to find if $chamion_name exists in our list of champions
+        $champion_exists= Champion::find(
+            array(
+                "columns" => "champion_name",
+                "conditions" => "champion_name = '" . $champion_name . "'"
+            )
+        );
+
+        // Make array for option selection list, prepending the "Overall" option
+        $option_list = Champion::find(array("columns" => "champion_name", "order" => "champion_name"))->toArray();
+        array_unshift($option_list, array("champion_name" => "Overall"));
+        $option_list = array_values($option_list);
+
+        // Make associative array with all keys == values for dropdown list
+        $combined_list = array();
+        foreach($option_list as $option)
+        {
+            array_push($combined_list, $option["champion_name"]);
+        }
+        $combined_list = array_combine($combined_list, $combined_list);
+
+        // If valid champion name, show page.  If not then redirect to home
+        if (count($champion_exists) == 1)
+        {
+            $this->view->setVar('json_content', $json_data);
+            $this->view->setVar('set_location',$set_location); 
+            $this->view->setVar('champion', $champion_name);
+            $this->view->setVar('option_list', $combined_list);
+        }
+        else
+        {
+            $this->response->redirect('../');
+        }
+    }  
+
+    public function getAction($champion_name)
+    {
+        // Get the user chosen options from POST data
+        $item_set = $this->request->getPost("item_set");
+        $skill_set = $this->request->getPost("skill_set");
+        $combined_set = $this->request->getPost("combined_set");
+
+        // Send relevant data back to user
+        $this->dispatcher->forward(array(
+            "action" => "set",
+            "params" => array($champion_name, "../../sets/test.json", "Kappa")
+            )
+        );
+    }
 }
 
