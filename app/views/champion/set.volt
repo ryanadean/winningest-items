@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-        {{ form("/winningest-items/champion/get/" ~ champion , "method": "post", "id": "form") }} 
+        {{ form("/champion/get/" ~ champion , "method": "post", "id": "form") }} 
         <tr>
              <td>
                  <?php echo $this->tag->selectStatic(array("item_set",$option_list)); ?>
@@ -49,7 +49,7 @@
         </tr>
     </thead>
     <tbody>
-        {{ form("/winningest-items/champion/get/" ~ champion, "method": "post", "id": "form_combined") }} 
+        {{ form("/champion/get/" ~ champion, "method": "post", "id": "form_combined") }} 
         <tr>
              <td></td>
              <td></td>
