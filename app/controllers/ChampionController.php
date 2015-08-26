@@ -9,11 +9,7 @@ class ChampionController extends ControllerBase
         $this->response->redirect('../');
     }
 
-    public function getSetAction()
-    {
-        sleep(1);
-    }
-
+    // Updates the list of champions
     public function updateAction()
     {
         // Connect to Riot Api and get champion data
@@ -55,6 +51,7 @@ class ChampionController extends ControllerBase
 
     }    
 
+    // Action to display champion page
     public function pageAction($champion_name)
     {
         // Try to find if $chamion_name exists in our list of champions
@@ -90,7 +87,8 @@ class ChampionController extends ControllerBase
         }
     }  
 
-    public function setAction($champion_name, $set_location, $json_data)
+    // Action to display champion page with set
+    public function setAction($champion_name, $set_location, $json_string)
     {
         // Try to find if $chamion_name exists in our list of champions
         $champion_exists= Champion::find(
@@ -116,7 +114,7 @@ class ChampionController extends ControllerBase
         // If valid champion name, show page.  If not then redirect to home
         if (count($champion_exists) == 1)
         {
-            $this->view->setVar('json_content', $json_data);
+            $this->view->setVar('json_content', $json_string);
             $this->view->setVar('set_location',$set_location); 
             $this->view->setVar('champion', $champion_name);
             $this->view->setVar('option_list', $combined_list);
@@ -127,6 +125,7 @@ class ChampionController extends ControllerBase
         }
     }  
 
+    // Action to get the set for champion
     public function getAction($champion_name)
     {
         // Get the user chosen options from POST data
@@ -134,10 +133,15 @@ class ChampionController extends ControllerBase
         $skill_set = $this->request->getPost("skill_set");
         $combined_set = $this->request->getPost("combined_set");
 
+
+        $set_location = "sets/test.json";
+        $json_string = file_get_contents($set_location); 
+        $set_location = "../../" . "sets/test.json";
+
         // Send relevant data back to user
         $this->dispatcher->forward(array(
             "action" => "set",
-            "params" => array($champion_name, "../../sets/test.json", "Kappa")
+            "params" => array($champion_name, $set_location, $json_string) 
             )
         );
     }
