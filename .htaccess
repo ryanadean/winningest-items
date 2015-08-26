@@ -3,8 +3,3 @@
 	RewriteRule  ^$ public/    [L]
 	RewriteRule  (.*) public/$1 [L]
 </IfModule>
-
-<FilesMatch "\.(?i:json)$">
-  ForceType application/octet-stream
-  Header set Content-Disposition attachment
-</FilesMatch> 
