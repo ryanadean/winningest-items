@@ -22,5 +22,5 @@
 </div>
 
 <br><br><br>
-<div align="center">Last Updated: </div>
+<div align="center">Last Updated: August 26, 2015</div>
 <br><br><br>
