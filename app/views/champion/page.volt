@@ -1,7 +1,7 @@
 <br>
 <div class="main-header"><a href="/">Winningest Item/Skill Sets!</a></div>
 <br>
-<div class="tip-header"><a href="/champion/page/{{champion}}"><img src=/imgs/champions/{{champion}}.png alt={{champion}}/></a>&nbsp;&nbsp;{{champion}}</div>
+<div class="tip-header"><a href="/champion/page/{{champion}}"><img src=public/imgs/champions/{{champion}}.png alt={{champion}}/></a>&nbsp;&nbsp;{{champion}}</div>
 <br>
 <br>
 
@@ -21,7 +21,7 @@
                  <?php echo $this->tag->selectStatic(array("item_set",$option_list)); ?>
              </td>
              <td>
-                 <img src="/imgs/plus.png" width=30px height=30px alt="" />
+                 <img src="public/imgs/plus.png" width=30px height=30px alt="" />
              </td>
              <td>
                  <?php echo $this->tag->selectStatic(array("skill_set",$option_list)); ?>
@@ -31,7 +31,7 @@
              </td>
              <td width="200">
                  {{ submit_button("Create!", "id": "submit") }} 
-                 <div id="loading" style="display:none;"><img src="/imgs/loading.gif" alt="" /></div>
+                 <div id="loading" style="display:none;"><img src="public/imgs/loading.gif" alt="" /></div>
              </td>
         </tr>
         {{ endForm()}}
@@ -57,11 +57,11 @@
                  <?php echo $this->tag->selectStatic(array("combined_set",$option_list)); ?>
              </td> 
              <td width="50">
-                 <img src="/imgs/arrow.png" width=30px height=30px alt="" />
+                 <img src="public/imgs/arrow.png" width=30px height=30px alt="" />
              </td>
              <td width="200">
                  {{ submit_button("Create!", "id": "submit_combined") }} 
-                 <div id="loading_combined" style="display:none;"><img src="/imgs/loading.gif" alt="" /></div>
+                 <div id="loading_combined" style="display:none;"><img src="public/imgs/loading.gif" alt="" /></div>
              </td>
         </tr>
         {{ endForm()}}
