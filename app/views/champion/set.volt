@@ -88,7 +88,7 @@
                 </textarea>
             </td>
             <td width="200">
-                <form method="get" action="{{set_location}}"><button type="submit">Download!</button></form>
+                <a href="{{setlocation}}" download> <button type="submit">Download!</button></form> </a>
             </td>
         </tr>
     </tbody>
