@@ -1,7 +1,7 @@
 <br>
 <div class="main-header"><a href="/winningest-items">Winningest Item/Skill Sets!</a></div>
 <br>
-<div class="tip-header"><a href="/winningest-items/app/controllers/champion/page/{{champion}}"><img src=/winningest-items/public/imgs/champions/{{champion}}.png alt={{champion}}/></a>&nbsp;&nbsp;{{champion}}</div>
+<div class="tip-header"><a href="/winningest-items/champion/page/{{champion}}"><img src=/winningest-items/public/imgs/champions/{{champion}}.png alt={{champion}}/></a>&nbsp;&nbsp;{{champion}}</div>
 <br>
 <br>
 
@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-        {{ form("/winningest-items/app/controllers/champion/get/" ~ champion , "method": "post", "id": "form") }} 
+        {{ form("/winningest-items/champion/get/" ~ champion , "method": "post", "id": "form") }} 
         <tr>
              <td>
                  <?php echo $this->tag->selectStatic(array("item_set",$option_list)); ?>
@@ -49,7 +49,7 @@
         </tr>
     </thead>
     <tbody>
-        {{ form("/winningest-items/app/controllers/champion/get/" ~ champion, "method": "post", "id": "form_combined") }} 
+        {{ form("/winningest-items/champion/get/" ~ champion, "method": "post", "id": "form_combined") }} 
         <tr>
              <td></td>
              <td></td>
