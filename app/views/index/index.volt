@@ -9,7 +9,7 @@
             <div class="row">
         {% endif %}
         <div class="col-1">
-            {{ link_to('/app/controllers/champion/page/' ~ champion , '<img src=/public/imgs/champions/' ~ champion ~ '.png alt=' ~ champion ~' width="90%" height="50%"/>')}}
+            {{ link_to('/app/controllers/champion/page/' ~ champion , '<img src=/winningest-items/public/imgs/champions/' ~ champion ~ '.png alt=' ~ champion ~' width="90%" height="50%"/>')}}
             <br>
             {{ link_to('/app/controllers/champion/page/' ~ champion , '<p>' ~ champion ~ '</p>' )}}
         </div>
