@@ -13,7 +13,7 @@ class ChampionController extends ControllerBase
     public function updateAction()
     {
         // Connect to Riot Api and get champion data
-        $key = '';
+        $key = '15db67da-4a5e-4628-bb75-fd8188b853a7';
         $api = new Api($key);
         $champions = $api->staticData()->getChampions();
 
