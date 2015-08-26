@@ -6,8 +6,3 @@ AddDefaultCharset UTF-8
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
 </IfModule>
-
-<FilesMatch "\.(?i:json)$">
-  ForceType application/octet-stream
-  Header set Content-Disposition attachment
-</FilesMatch>
