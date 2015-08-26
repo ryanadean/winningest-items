@@ -20,4 +20,7 @@
         {% endif %}
     {% endfor %}
 </div>
-<br><br><br><br><br><br>
+
+<br><br><br>
+<div align="center">Last Updated: </div>
+<br><br><br>
