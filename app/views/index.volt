@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="/winningest-items/public/css/normalize.css">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Submission: Riot API Challenge 2.0</title>
+        <link rel="icon" type="image/png" href="/winningest-items/public/imgs/favicon.ico">
     </head>
     <body>
         {{ content() }}
