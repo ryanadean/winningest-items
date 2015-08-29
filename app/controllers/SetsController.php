@@ -11,14 +11,14 @@ class SetsController extends ControllerBase
     {
         $overall_phql = "";
         print("Executing query");
-        $champions = $manager->executeQuery($overall_phql, array("champion_id" => $champion_id));
+        $games = $manager->executeQuery($overall_phql, array("champion_id" => $champion_id));
         
-        foreach($champions as $champion)
+        foreach($games as $game)
         {
-            print($champion);
+            print($game);
         }
 
-        print("Inserting overall item set");
+        print("Inserting overall item set into CachedData");
         $overall_item_set = new CachedData();
         $overall_item_set->save(
             array(
@@ -29,7 +29,7 @@ class SetsController extends ControllerBase
             )
         );
 
-        print("Inserting overall skill set");
+        print("Inserting overall skill set into CachedData");
         $overall_skill_set = new CachedData();
         $overall_skill_set->save(
             array(
@@ -47,14 +47,14 @@ class SetsController extends ControllerBase
         $vs_phql = "";
 
         print("Executing query");
-        $champions = $manager->executeQuery($vs_phql, array("champion_id" => $champion_id, "vs_id" => $vs_id));
+        $games = $manager->executeQuery($vs_phql, array("champion_id" => $champion_id, "vs_id" => $vs_id));
         
-        foreach($champions as $champion)
+        foreach($games as $game)
         {
-            print($champion);
+            print($game);
         }
 
-        print("Inserting vs item set");
+        print("Inserting vs item set into CachedData");
         $vs_item_set = new CachedData();
         $vs_item_set->save(
             array(
@@ -65,7 +65,7 @@ class SetsController extends ControllerBase
             )
         );
 
-        print("Inserting vs skill set");
+        print("Inserting vs skill set into CachedData");
         $vs_skill_set = new CachedData();
         $vs_skill_set->save(
             array(
