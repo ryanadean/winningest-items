@@ -133,12 +133,49 @@ class ChampionController extends ControllerBase
         $skill_set = $this->request->getPost("skill_set");
         $combined_set = $this->request->getPost("combined_set");
 
+        if($combined_set !== '')
+        {
+            $item_set = $combined_set;
+            $skill_set = $combined_set;
+        }
 
+        // Assign set type to find
+        $item_type = ($item_set == "Overall") ? "overall" : "vs";
+        $skill_type = ($skill_set == "Overall") ? "overall" : "vs";
+
+        // Convert all champion names into IDs, to be used for CachedData conditionals
+        $champion_id = Champion::find(array("champion_name" => $champion_name));
+        $vs_item_id = ($item_set == "Overall") ? "overall" : Champion::find(array("champion_name" => $item_set));
+        $vs_skill_id = ($skill_set == "Overall") ? "overall" : Champion::find(array("champion_name" => $skill_set));
+        
+
+        $find_item_set = CachedData::find(
+            array(
+                "type" => $item_type . "_item_set",
+                "conditionals" => json_encode(array("champion_id" => $champion_id, "vs_id" => $vs_item_id))
+            )
+        );
+
+        $find_skill_set = CachedData::find(
+            array(
+                "type" => $skill_type . "_skill_set", 
+                "conditionals" => json_encode(array("champion_id" => $champion_id, "vs_id" => $vs_skill_id))
+            )
+        );
+        
+        // Insert skill set into item set
+        $json = json_decode($find_item_set->value, true);
+        $json[blocks][0][type] = $find_skill_set->value;
+        $json_data = json_encode($json);
+
+        // Write to file
+
+        // Get JSON data and location to be sent to user
         $set_location = "sets/test.json";
         $json_string = file_get_contents($set_location); 
         $set_location = "../../" . "sets/test.json";
 
-        // Send relevant data back to user
+        // Send data back to user forwarding through setAction
         $this->dispatcher->forward(array(
             "action" => "set",
             "params" => array($champion_name, $set_location, $json_string) 
