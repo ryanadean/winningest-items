@@ -15,7 +15,7 @@ class SetsController extends ControllerBase
         $champion_list = Champion::find(array("columns" => "champion_id"))->toArray();
         print("Champion list: " . $champion_list);
 
-        for($champion_list as $champion)
+        foreach($champion_list as $champion)
         {
             $champion_id = $champion["champion_id"];
 
@@ -92,12 +92,12 @@ AND winner = 1";
         print("Champion list: " . $champion_list);
         print("VS Champion list: " . $vs_list);
         
-        for($champion_list as $champion)
+        foreach($champion_list as $champion)
         {
 
             $champion_id = $champion["champion_id"];
 
-            for($vs_list as $vs_champion)
+            foreach($vs_list as $vs_champion)
             {
 
                 $vs_id = $vs_champion["champion_id"];
