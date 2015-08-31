@@ -1,5 +1,7 @@
 <?php
 
+use Phalcon\Mvc\Model\Query;
+
 class SetsController extends ControllerBase
 {
     public function indexAction()
@@ -15,9 +17,9 @@ INNER JOIN ParticipantStats ON MatchParticipant.player_id = ParticipantStats.pla
 AND MatchParticipant.id = ParticipantStats.id
 WHERE champion_id = :champion_id
 AND winner = 1";
-        print("Executing query");
+        print("Executing query: ");
         print($overall_phql);
-        $games = $manager->executeQuery($overall_phql, array("champion_id" => $champion_id));
+        $games = $this->modelsManager->executeQuery($overall_phql, array("champion_id" => $champion_id));
 
         $all_item_sets = array();
        
@@ -86,9 +88,9 @@ WHERE (champion_id = :vs_id AND winner = 0)
 ON t1.id = t2.id
 WHERE t1.champion_id = :champion_id AND t2.champion_id = :vs_id";
 
-        print("Executing query");
+        print("Executing query: ");
         print($overall_phql);
-        $games = $manager->executeQuery($vs_phql, array("champion_id" => $champion_id, "vs_id" => $vs_id));
+        $games = $this->modelsManager->executeQuery($vs_phql, array("champion_id" => $champion_id, "vs_id" => $vs_id));
         
         $all_item_sets = array();
         
