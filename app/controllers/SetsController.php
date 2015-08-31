@@ -12,8 +12,10 @@ class SetsController extends ControllerBase
     public function updateChampionOverallAction()
     {
         $champion_list = Champion::find(array("columns" => "champion_id"))->toArray();
-        for($champion_list as $champion_id)
+        for($champion_list as $champion)
         {
+            $champion_id = $champion["champion_id"];
+
             $overall_phql = "SELECT MatchParticipant.id, MatchParticipant.player_id, champion_id, summoner_1, summoner_2, team_id, CONCAT(IFNULL(item0,''),' ',IFNULL(item1,''),' ',IFNULL(item2,''),' ',IFNULL(item3,''),' ',IFNULL(item4,''),' ',IFNULL(item5,'')) AS items, winner
 FROM MatchParticipant 
 INNER JOIN ParticipantStats ON MatchParticipant.player_id = ParticipantStats.player_id
@@ -83,10 +85,16 @@ AND winner = 1";
         $champion_list = Champion::find(array("columns" => "champion_id"))->toArray();
         $vs_list = Champion::find(array("columns" => "champion_id"))->toArray();
 
-        for($champion_list as $champion_id)
+        for($champion_list as $champion)
         {
-            for($vs_list as $vs_id)
+
+            $champion_id = $champion["champion_id"];
+
+            for($vs_list as $vs_champion)
             {
+
+                $vs_id = $vs_champion["champion_id"];
+
                 $vs_phql = "SELECT t1.* FROM
 (
 SELECT MatchParticipant.id, MatchParticipant.player_id, champion_id, summoner_1, summoner_2, team_id, CONCAT(IFNULL(item0,''),' ',IFNULL(item1,''),' ',IFNULL(item2,''),' ',IFNULL(item3,''),' ',IFNULL(item4,''),' ',IFNULL(item5,'')) AS items, winner
