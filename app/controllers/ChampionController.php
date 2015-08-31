@@ -1,6 +1,7 @@
 <?php
 
 use LeagueWrap\Api;
+use Phalcon\Http\Response;
 
 class ChampionController extends ControllerBase
 {
