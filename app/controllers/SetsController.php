@@ -37,11 +37,11 @@ AND winner = 1";
             if (array_key_exists($game_items, $all_item_sets))
             {
                 print("Incremented ");
-                $all_item_sets['game_items'] += 1;
+                $all_item_sets[$game_items] += 1;
             }else
             {
                 print("Added new ");
-                $all_item_sets += array('game_items' => 1);
+                $all_item_sets += array($game_items => 1);
             }
         }
 
@@ -115,11 +115,11 @@ WHERE t1.champion_id = :champion_id: AND t2.champion_id = :vs_id:";
             if (array_key_exists($game_items, $all_item_sets))
             {
                 print("Incremented ");
-                $all_item_sets['game_items'] += 1;
+                $all_item_sets[$game_items] += 1;
             }else
             {
                 print("Added new ");
-                $all_item_sets += array('game_items' => 1);
+                $all_item_sets += array($game_items => 1);
             }
         }
 
