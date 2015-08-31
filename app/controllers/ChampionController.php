@@ -136,7 +136,8 @@ class ChampionController extends ControllerBase
         $this->response->setHeader("Content-Type", "application/json");
         $this->response->setHeader("Content-Disposition", 'attachment; filename="' . $filename . '"');
         $this->response->setHeader("Content-Length" , strlen($json_string));
-        print($json_string);
+        $this->response->setContent($json_string);
+        $this->response->send();
     }
 
     // Action to get the set for champion, then forwards to setAction
