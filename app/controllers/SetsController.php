@@ -30,7 +30,7 @@ AND winner = 1";
             $game_items = implode(' ', sort(explode(' ', $game->items)));
 
             // If item set exists then increment, otherwise add in item set
-            if (array_key_exists($item_array, $all_item_sets))
+            if (array_key_exists($game_items, $all_item_sets))
             {
                 $all_item_sets['game_items'] += 1;
             }else
@@ -102,7 +102,7 @@ WHERE t1.champion_id = :champion_id: AND t2.champion_id = :vs_id:";
             $game_items = implode(' ', sort(explode(' ', $game->items)));
 
             // If item set exists then increment, otherwise add in item set
-            if (array_key_exists($item_array, $all_item_sets))
+            if (array_key_exists($game_items, $all_item_sets))
             {
                 $all_item_sets['game_items'] += 1;
             }else
