@@ -93,7 +93,7 @@
                 </textarea>
             </td>
             <td width="200">
-                <a href="{{filename}}" download><button type="button">Download!</button></a>
+                <!--<a href="{{filename}}" download><button type="button">Download!</button></a>-->
                 <form action = "/champion/download/" method = "post">
                     <input type = "hidden" value = "{{json_content}}">
                     <button name = "download_button" type = "submit" value = "{{filename}}">Download!</button>
