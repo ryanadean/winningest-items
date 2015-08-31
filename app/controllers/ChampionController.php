@@ -127,8 +127,9 @@ class ChampionController extends ControllerBase
     }  
 
     // Causes user to download json
-    public function downloadAction($champion_name)
+    public function downloadAction()
     {
+        $this->view->disable(); 
         $filename = $this->request->getPost("filename");
         $json_string = $this->request->getPost("json_content");
 
@@ -136,13 +137,6 @@ class ChampionController extends ControllerBase
         $this->response->setHeader('Content-Disposition: attachment; filename="'. $filename .'"');
         $this->response->setHeader("Content-Length: " . strlen($json_string));
         echo $json_string;
-
-        // Send data back to user forwarding through setAction
-        $this->dispatcher->forward(array(
-            "action" => "set",
-            "params" => array($champion_name, $filename, $json_string) 
-            )
-        );
     }
 
     // Action to get the set for champion, then forwards to setAction
