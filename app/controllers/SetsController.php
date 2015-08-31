@@ -11,7 +11,10 @@ class SetsController extends ControllerBase
     // Updates Item and Skill sets for overall option
     public function updateChampionOverallAction()
     {
+        print("Finding champions: ");
         $champion_list = Champion::find(array("columns" => "champion_id"))->toArray();
+        print("Champion list: " . $champion_list);
+
         for($champion_list as $champion)
         {
             $champion_id = $champion["champion_id"];
@@ -82,9 +85,13 @@ AND winner = 1";
     // Updates Item and Skill sets for matchups
     public function updateChampionVSAction()
     {
+
+        print("Finding champions: ");
         $champion_list = Champion::find(array("columns" => "champion_id"))->toArray();
         $vs_list = Champion::find(array("columns" => "champion_id"))->toArray();
-
+        print("Champion list: " . $champion_list);
+        print("VS Champion list: " . $vs_list);
+        
         for($champion_list as $champion)
         {
 
