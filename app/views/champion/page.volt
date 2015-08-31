@@ -1,11 +1,12 @@
 <br>
-<div class="main-header"><a href="/winningest-items">Winningest Item/Skill Sets!</a></div>
+<div class="main-header"><a href="/winningest-items">Winningest Item Sets!</a></div>
+<!--<div class="main-header"><a href="/winningest-items">Winningest Item/Skill Sets!</a></div>-->
 <br>
 <div class="tip-header"><a href="/winningest-items/champion/page/{{champion}}"><img src=/winningest-items/public/imgs/champions/{{champion}}.png alt={{champion}}/></a>&nbsp;&nbsp;{{champion}}</div>
 <br>
+<!--
 <br>
 
-<!--
 <table class="table-width">
     <thead>
         <tr>

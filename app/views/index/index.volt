@@ -1,5 +1,6 @@
 <br>
-<div class="main-header"><a href="/winningest-items">Winningest Item/Skill Sets!</a></div>
+<div class="main-header"><a href="/winningest-items">Winningest Item Sets!</a></div>
+<!--<div class="main-header"><a href="/winningest-items">Winningest Item/Skill Sets!</a></div>-->
 <div class="tip-header">(Use your browser's find function + Esc + Enter to quickly select)</div>
 <br>
 <div class="grid-container" >
