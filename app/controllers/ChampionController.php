@@ -32,9 +32,6 @@ class ChampionController extends ControllerBase
             $champion_name = $champion->name; 
             $champion_name = str_replace($to_remove, $to_replace, $champion_name);
 
-            // Make directory to hold each champions' item/skill sets
-            mkdir("sets/" . $champion_name, 0664);
-
             // Insert champion id and name
             $new_champion = new Champion();
             $new_champion->setTransaction($transaction);
