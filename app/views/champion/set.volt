@@ -94,7 +94,7 @@
             </td>
             <td width="200">
                 <!--<a href="{{filename}}" download><button type="button">Download!</button></a>-->
-                <form action = "winningest-items/champion/download/" method = "post">
+                <form action = "/winningest-items/champion/download/" method = "post">
                     <input type = "hidden" value = "{{json_content}}">
                     <button name = "download_button" type = "submit" value = "{{filename}}">Download!</button>
                 </form>
