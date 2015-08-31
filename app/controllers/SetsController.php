@@ -27,14 +27,17 @@ AND winner = 1";
         foreach($games as $game)
         {
             // Gets item list and sorts
+            print("Game item list: " . $game->items);
             $game_items = implode(' ', sort(explode(' ', $game->items)));
 
             // If item set exists then increment, otherwise add in item set
             if (array_key_exists($game_items, $all_item_sets))
             {
+                print("Incremented ");
                 $all_item_sets['game_items'] += 1;
             }else
             {
+                print("Added new ");
                 $all_item_sets += array('game_items' => 1);
             }
         }
@@ -99,14 +102,17 @@ WHERE t1.champion_id = :champion_id: AND t2.champion_id = :vs_id:";
         foreach($games as $game)
         {
             // Gets item list and sorts
+            print("Game item list: " . $game->items);
             $game_items = implode(' ', sort(explode(' ', $game->items)));
 
             // If item set exists then increment, otherwise add in item set
             if (array_key_exists($game_items, $all_item_sets))
             {
+                print("Incremented ");
                 $all_item_sets['game_items'] += 1;
             }else
             {
+                print("Added new ");
                 $all_item_sets += array('game_items' => 1);
             }
         }
