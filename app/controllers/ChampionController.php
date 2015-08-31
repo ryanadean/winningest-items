@@ -133,9 +133,9 @@ class ChampionController extends ControllerBase
         $filename = $this->request->getPost("filename");
         $json_string = $this->request->getPost("json_content");
 
-        $this->response->setHeader("Content-Type: applicaton/json");
-        $this->response->setHeader('Content-Disposition: attachment; filename="'. $filename .'"');
-        $this->response->setHeader("Content-Length: " . strlen($json_string));
+        $this->response->setHeader("Content-Type", "applicaton/json");
+        $this->response->setHeader('Content-Disposition', 'attachment; filename="'. $filename .'"');
+        $this->response->setHeader("Content-Length" , strlen($json_string));
         echo $json_string;
     }
 
