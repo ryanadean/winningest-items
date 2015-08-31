@@ -137,6 +137,7 @@ class ChampionController extends ControllerBase
         $this->response->setHeader('Content-Disposition', 'attachment; filename="'. $filename .'"');
         $this->response->setHeader("Content-Length" , strlen($json_string));
         echo $json_string;
+        exit;
     }
 
     // Action to get the set for champion, then forwards to setAction
@@ -233,18 +234,30 @@ class ChampionController extends ControllerBase
                     "showIfSummonerSpell" => "",
                     "hideIfSummonerSpell" => "",
                     "items" => array(
-                        "id" => $item_set_array[0],
-                        "count" => 1,
-                        "id" => $item_set_array[1],
-                        "count" => 1,
-                        "id" => $item_set_array[2],
-                        "count" => 1,
-                        "id" => $item_set_array[3],
-                        "count" => 1,
-                        "id" => $item_set_array[4],
-                        "count" => 1,
-                        "id" => $item_set_array[5],
-                        "count" => 1
+                        array(
+                            "id" => $item_set_array[0],
+                            "count" => 1
+                        ),
+                        array(
+                            "id" => $item_set_array[1],
+                            "count" => 1,
+                        ),
+                        array(
+                            "id" => $item_set_array[2],
+                            "count" => 1,
+                        ),
+                        array(
+                            "id" => $item_set_array[3],
+                            "count" => 1,
+                        ),
+                        array(
+                            "id" => $item_set_array[4],
+                            "count" => 1,
+                        ),
+                        array(
+                            "id" => $item_set_array[5],
+                            "count" => 1
+                        )
                     )
                 )
             )    
