@@ -116,7 +116,7 @@ class ChampionController extends ControllerBase
         if (count($champion_exists) == 1)
         {
             $this->view->setVar('json_content', $json_string);
-            $this->view->setVar('filename',$filename); 
+            $this->view->setVar('filename',$set_location); 
             $this->view->setVar('champion', $champion_name);
             $this->view->setVar('option_list', $combined_list);
         }
