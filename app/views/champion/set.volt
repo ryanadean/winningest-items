@@ -107,10 +107,11 @@
 <!-- Shows copy/paste textbox and download button -->
 <script type="text/javascript">
 (function (d) {
-  d.getElementById('form').onsubmit = function () {
-    d.getElementById('submit').style.display = 'none';
-    d.getElementById('loading').style.display = 'block';
-  };
+
+//  d.getElementById('form').onsubmit = function () {
+//    d.getElementById('submit').style.display = 'none';
+//    d.getElementById('loading').style.display = 'block';
+//  };
 
   d.getElementById('form_combined').onsubmit = function () {
     d.getElementById('submit_combined').style.display = 'none';
