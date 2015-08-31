@@ -130,7 +130,7 @@ class ChampionController extends ControllerBase
     public function downloadAction()
     {
         $filename = $this->request->getPost("filename");
-        $json_string = $this->request->getPost("json_download");
+        $json_string = $this->request->getPost("json_content");
 
         $this->response->setHeader("Content-Type: applicaton/json");
         $this->response->setHeader('Content-Disposition: attachment; filename="'. $filename .'"');
@@ -196,7 +196,7 @@ class ChampionController extends ControllerBase
 
         $compiled_item_set = 
         array(
-            "title" => $champion_name . "vs" . $item_set . "Set",
+            "title" => $champion_name . " vs " . $item_set,
             "type" => "custom",
             "map" => "any",
             "mode" => "any",
@@ -253,7 +253,6 @@ class ChampionController extends ControllerBase
         // Get JSON data and location to be sent to user
         $filename= $champion_name . "vs" . $item_set . ".json";
         $json_string = json_encode($compiled_item_set); 
-        print($Json_string);
         // Send data back to user forwarding through setAction
         $this->dispatcher->forward(array(
             "action" => "set",
