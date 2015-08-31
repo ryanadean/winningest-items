@@ -115,7 +115,7 @@ class ChampionController extends ControllerBase
         if (count($champion_exists) == 1)
         {
             $this->view->setVar('json_content', $json_string);
-            $this->view->setVar('set_location',$set_location); 
+            $this->view->setVar('filename',$filename); 
             $this->view->setVar('champion', $champion_name);
             $this->view->setVar('option_list', $combined_list);
         }
@@ -124,6 +124,20 @@ class ChampionController extends ControllerBase
             $this->response->redirect('../');
         }
     }  
+
+    // Causes user to download json
+    public function downloadAction()
+    {
+        $filename = $this->request->getPost("filename");
+        $json_string = $this->request->getPost("json_download")
+
+        $response = new Response();
+        $response->setHeader("Content-Type: applicaton/json")
+        $response->setHeader('Content-Disposition: attachment; filename="'. $filename .'"');
+        $response->setHeader("Content-Length: " . strlen($json_string));
+        echo $json_string;
+        exit;
+    }
 
     // Action to get the set for champion, then forwards to setAction
     public function getAction($champion_name)
@@ -164,6 +178,8 @@ class ChampionController extends ControllerBase
             )
         );
 
+        $item_set_array = explode(' ', $find_item_set);
+
         /**
         $find_skill_set = CachedData::find(
             array(
@@ -178,17 +194,70 @@ class ChampionController extends ControllerBase
         $json_data = json_encode($json);
         **/
 
-        // Write to file
+        $compiled_item_set = "
+        {
+            "title" => $champion_name . "vs" . $item_set . "Set",
+            "type" => "custom",
+            "map" => "any",
+            "mode" => "any",
+            "priority" => false,
+            "sortrank" => 1
+            "blocks" => array(
+                array(
+                    "type" => "Basic Items",
+                    "recMath" => false,
+                    "minSummonerLevel" => -1,
+                    "maxSummonerLevel" => -1,
+                    "showIfSummonerSpell" => "",
+                    "hideIfSummonerSpell" => "",
+                    "items" => array(
+                        "id" => "2003",
+                        "count" => 1,
+                        "id" => "3340",
+                        "count" => 1,
+                        "id" => "3341",
+                        "count" => 1,
+                        "id" => "3342",
+                        "count" => 1,
+                        "id" => "2044",
+                        "count" => 1,
+                        "id" => "2043",
+                        "count" => 1
+                    )
+                ),
+                array(
+                    "type" => "Item Set",
+                    "recMath" => false,
+                    "minSummonerLevel" => -1,
+                    "maxSummonerLevel" => -1,
+                    "showIfSummonerSpell" => "",
+                    "hideIfSummonerSpell" => "",
+                    "items" => array(
+                        "id" => $item_set_array[0],
+                        "count" => 1,
+                        "id" => $item_set_array[1],
+                        "count" => 1,
+                        "id" => $item_set_array[2],
+                        "count" => 1,
+                        "id" => $item_set_array[3],
+                        "count" => 1,
+                        "id" => $item_set_array[4],
+                        "count" => 1,
+                        "id" => $item_set_array[5],
+                        "count" => 1
+                    )
+                )
+            )    
+        }"
 
         // Get JSON data and location to be sent to user
-        $set_location = "sets/test.json";
-        $json_string = file_get_contents($set_location); 
-        $set_location = "../../" . "sets/test.json";
-
+        $filename= $champion_name . "vs" . $item_set . ".json";
+        $json_string = json_encode($compiled_item_set); 
+        print($Json_string);
         // Send data back to user forwarding through setAction
         $this->dispatcher->forward(array(
             "action" => "set",
-            "params" => array($champion_name, $set_location, $json_string) 
+            "params" => array($champion_name, $filename, $json_string) 
             )
         );
     }
