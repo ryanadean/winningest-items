@@ -5,6 +5,7 @@
 <br>
 <br>
 
+<!--
 <table class="table-width">
     <thead>
         <tr>
@@ -38,13 +39,16 @@
     </tbody>
 
 </table>
+-->
+
 <br>
 <table class="table-width">
     <thead>
         <tr>
             <th></th>
             <th></th>
-            <th>Combined Set Option ({{champion}} vs *)</th>
+            <!--<th>Combined Set Option ({{champion}} vs *)</th>-->
+            <th>Item Set Option ({{champion}} vs *)</th>
             <th></th>
         </tr>
     </thead>
