@@ -28,7 +28,9 @@ AND winner = 1";
         {
             // Gets item list and sorts
             print("Game item list: " . $game->items);
-            $game_items = implode(' ', sort(explode(' ', $game->items), SORT_NUMERIC));
+            $items_as_array = explode(' ', $game->items);
+            sort($items_as_array, SORT_NUMERIC);
+            $game_items = implode(' ', $items_as_array);
             print(" [After sort: " . $game_items .  "]");
 
             // If item set exists then increment, otherwise add in item set
@@ -104,7 +106,9 @@ WHERE t1.champion_id = :champion_id: AND t2.champion_id = :vs_id:";
         {
             // Gets item list and sorts
             print("Game item list: " . $game->items);
-            $game_items = implode(' ', sort(explode(' ', $game->items), SORT_NUMERIC));
+            $items_as_array = explode(' ', $game->items);
+            sort($items_as_array, SORT_NUMERIC);
+            $game_items = implode(' ', $items_as_array);
             print(" [After sort: " . $game_items .  "]");
 
             // If item set exists then increment, otherwise add in item set
