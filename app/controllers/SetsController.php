@@ -16,6 +16,7 @@ AND MatchParticipant.id = ParticipantStats.id
 WHERE champion_id = :champion_id
 AND winner = 1";
         print("Executing query");
+        print($overall_phql);
         $games = $manager->executeQuery($overall_phql, array("champion_id" => $champion_id));
 
         $all_item_sets = array();
@@ -86,6 +87,7 @@ ON t1.id = t2.id
 WHERE t1.champion_id = :champion_id AND t2.champion_id = :vs_id";
 
         print("Executing query");
+        print($overall_phql);
         $games = $manager->executeQuery($vs_phql, array("champion_id" => $champion_id, "vs_id" => $vs_id));
         
         $all_item_sets = array();
