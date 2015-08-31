@@ -164,21 +164,21 @@ class ChampionController extends ControllerBase
         **/
 
         // Convert all champion names into IDs, to be used for CachedData conditionals
-        $champion_id = Champion::find(array("champion_name" => $champion_name));
-        $vs_item_id = ($item_set == "Overall") ? "overall" : Champion::find(array("champion_name" => $item_set))->champion_id;
+        $champion_id = Champion::findFirst(array("champion_name" => $champion_name))->champion_id;
+        $vs_item_id = ($item_set == "Overall") ? "overall" : Champion::findFirst(array("champion_name" => $item_set))->champion_id;
         /**
         $vs_skill_id = ($skill_set == "Overall") ? "overall" : Champion::find(array("champion_name" => $skill_set))->champion_id;
         **/
 
         // 432 000 = 5 days in seconds
-        $find_item_set = CachedData::find(
+        $find_item_set = CachedData::findFirst(
             array(
                 "type" => $item_type . "_item_set",
                 "conditionals" => json_encode(array("champion_id" => $champion_id, "vs_id" => $vs_item_id))
             )
         );
 
-        $item_set_array = explode(' ', $find_item_set);
+        $item_set_array = explode(' ', $find_item_set->value);
 
         /**
         $find_skill_set = CachedData::find(
