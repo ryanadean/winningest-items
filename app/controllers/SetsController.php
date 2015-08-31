@@ -15,7 +15,7 @@ class SetsController extends ControllerBase
 FROM MatchParticipant 
 INNER JOIN ParticipantStats ON MatchParticipant.player_id = ParticipantStats.player_id
 AND MatchParticipant.id = ParticipantStats.id
-WHERE champion_id = :champion_id
+WHERE champion_id = :champion_id:
 AND winner = 1";
         print("Executing query: ");
         print($overall_phql);
@@ -75,7 +75,7 @@ SELECT MatchParticipant.id, MatchParticipant.player_id, champion_id, summoner_1,
 FROM MatchParticipant
 INNER JOIN ParticipantStats ON MatchParticipant.player_id = ParticipantStats.player_id
 AND MatchParticipant.id = ParticipantStats.id
-WHERE (champion_id = :champion_id AND winner = 1)
+WHERE (champion_id = :champion_id: AND winner = 1)
 ) t1
 INNER JOIN
 (
@@ -83,10 +83,10 @@ SELECT MatchParticipant.id, MatchParticipant.player_id, champion_id, summoner_1,
 FROM MatchParticipant
 INNER JOIN ParticipantStats ON MatchParticipant.player_id = ParticipantStats.player_id
 AND MatchParticipant.id = ParticipantStats.id
-WHERE (champion_id = :vs_id AND winner = 0)
+WHERE (champion_id = :vs_id: AND winner = 0)
 ) t2
 ON t1.id = t2.id
-WHERE t1.champion_id = :champion_id AND t2.champion_id = :vs_id";
+WHERE t1.champion_id = :champion_id: AND t2.champion_id = :vs_id:";
 
         print("Executing query: ");
         print($overall_phql);
