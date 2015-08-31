@@ -23,7 +23,7 @@ AND winner = 1";
 
         $all_item_sets = array();
        
-        print("Analyzing"); 
+        print("Analyzing "); 
         foreach($games as $game)
         {
             // Gets item list and sorts
@@ -41,6 +41,7 @@ AND winner = 1";
 
         // Get item set with most wins
         $winningest_item_set = array_search(max($all_item_sets),$all_item_sets);
+        print($winningest_item_set);
 
         print("Inserting highest overall item set into CachedData");
         $overall_item_set = new CachedData();
@@ -89,12 +90,12 @@ ON t1.id = t2.id
 WHERE t1.champion_id = :champion_id: AND t2.champion_id = :vs_id:";
 
         print("Executing query: ");
-        print($overall_phql);
+        print($vs_phql);
         $games = $this->modelsManager->executeQuery($vs_phql, array("champion_id" => $champion_id, "vs_id" => $vs_id));
         
         $all_item_sets = array();
         
-        print("Analyzing"); 
+        print("Analyzing "); 
         foreach($games as $game)
         {
             // Gets item list and sorts
@@ -112,6 +113,8 @@ WHERE t1.champion_id = :champion_id: AND t2.champion_id = :vs_id:";
 
         // Get item set with most wins
         $winningest_item_set = array_search(max($all_item_sets),$all_item_sets);
+        print($winningest_item_set);
+
         print("Inserting vs item set into CachedData");
         $vs_item_set = new CachedData();
         $vs_item_set->save(
