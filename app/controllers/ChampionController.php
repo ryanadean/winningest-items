@@ -125,30 +125,38 @@ class ChampionController extends ControllerBase
         }
     }  
 
-    // Action to get the set for champion
+    // Action to get the set for champion, then forwards to setAction
     public function getAction($champion_name)
     {
         // Get the user chosen options from POST data
         $item_set = $this->request->getPost("item_set");
+        /**
         $skill_set = $this->request->getPost("skill_set");
+        **/
         $combined_set = $this->request->getPost("combined_set");
 
         if($combined_set !== '')
         {
             $item_set = $combined_set;
+            /**
             $skill_set = $combined_set;
+            **/
         }
 
-        // Assign set type to find
+        // Get the kind of set type to find
         $item_type = ($item_set == "Overall") ? "overall" : "vs";
+        /**
         $skill_type = ($skill_set == "Overall") ? "overall" : "vs";
+        **/
 
         // Convert all champion names into IDs, to be used for CachedData conditionals
         $champion_id = Champion::find(array("champion_name" => $champion_name));
-        $vs_item_id = ($item_set == "Overall") ? "overall" : Champion::find(array("champion_name" => $item_set));
-        $vs_skill_id = ($skill_set == "Overall") ? "overall" : Champion::find(array("champion_name" => $skill_set));
-        
+        $vs_item_id = ($item_set == "Overall") ? "overall" : Champion::find(array("champion_name" => $item_set))->champion_id;
+        /**
+        $vs_skill_id = ($skill_set == "Overall") ? "overall" : Champion::find(array("champion_name" => $skill_set))->champion_id;
+        **/
 
+        // 432 000 = 5 days in seconds
         $find_item_set = CachedData::find(
             array(
                 "type" => $item_type . "_item_set",
@@ -156,6 +164,7 @@ class ChampionController extends ControllerBase
             )
         );
 
+        /**
         $find_skill_set = CachedData::find(
             array(
                 "type" => $skill_type . "_skill_set", 
@@ -167,6 +176,7 @@ class ChampionController extends ControllerBase
         $json = json_decode($find_item_set->value, true);
         $json[blocks][0][type] = $find_skill_set->value;
         $json_data = json_encode($json);
+        **/
 
         // Write to file
 
