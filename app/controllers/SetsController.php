@@ -11,7 +11,7 @@ class SetsController extends ControllerBase
     // Updates Item and Skill sets for overall option
     public function updateChampionOverallAction($champion_id)
     {
-        $overall_phql = "SELECT MatchParticipant.id, MatchParticipant.player_id, champion_id, summoner_1, summoner_2, team_id, CONCAT(IFNULL(item0,''),' ',IFNULL(item1,''),' ',IFNULL(item2,''),' ',IFNULL(item3,''),' ',IFNULL(item4,''),' ',IFNULL(item5,''),' ',IFNULL(item6,'')) AS items, winner
+        $overall_phql = "SELECT MatchParticipant.id, MatchParticipant.player_id, champion_id, summoner_1, summoner_2, team_id, CONCAT(IFNULL(item0,''),' ',IFNULL(item1,''),' ',IFNULL(item2,''),' ',IFNULL(item3,''),' ',IFNULL(item4,''),' ',IFNULL(item5,'')) AS items, winner
 FROM MatchParticipant 
 INNER JOIN ParticipantStats ON MatchParticipant.player_id = ParticipantStats.player_id
 AND MatchParticipant.id = ParticipantStats.id
@@ -75,7 +75,7 @@ AND winner = 1";
     {
         $vs_phql = "SELECT t1.* FROM
 (
-SELECT MatchParticipant.id, MatchParticipant.player_id, champion_id, summoner_1, summoner_2, team_id, CONCAT(IFNULL(item0,''),' ',IFNULL(item1,''),' ',IFNULL(item2,''),' ',IFNULL(item3,''),' ',IFNULL(item4,''),' ',IFNULL(item5,''),' ',IFNULL(item6,'')) AS items, winner
+SELECT MatchParticipant.id, MatchParticipant.player_id, champion_id, summoner_1, summoner_2, team_id, CONCAT(IFNULL(item0,''),' ',IFNULL(item1,''),' ',IFNULL(item2,''),' ',IFNULL(item3,''),' ',IFNULL(item4,''),' ',IFNULL(item5,'')) AS items, winner
 FROM MatchParticipant
 INNER JOIN ParticipantStats ON MatchParticipant.player_id = ParticipantStats.player_id
 AND MatchParticipant.id = ParticipantStats.id
