@@ -102,24 +102,10 @@ AND winner = 1";
 
                 $vs_id = $vs_champion["champion_id"];
 
-                $vs_phql = "SELECT t1.* FROM
-(
-SELECT MatchParticipant.id, MatchParticipant.player_id, champion_id, summoner_1, summoner_2, team_id, CONCAT(IFNULL(item0,''),' ',IFNULL(item1,''),' ',IFNULL(item2,''),' ',IFNULL(item3,''),' ',IFNULL(item4,''),' ',IFNULL(item5,'')) AS items, winner
-FROM MatchParticipant
-INNER JOIN ParticipantStats ON MatchParticipant.player_id = ParticipantStats.player_id
-AND MatchParticipant.id = ParticipantStats.id
-WHERE (champion_id = :champion_id: AND winner = 1)
-) AS t1
-INNER JOIN
-(
-SELECT MatchParticipant.id, MatchParticipant.player_id, champion_id, summoner_1, summoner_2, team_id, CONCAT(IFNULL(item0,''),' ',IFNULL(item1,''),' ',IFNULL(item2,''),' ',IFNULL(item3,''),' ',IFNULL(item4,''),' ',IFNULL(item5,''),' ',IFNULL(item6,'')) AS items, winner
-FROM MatchParticipant
-INNER JOIN ParticipantStats ON MatchParticipant.player_id = ParticipantStats.player_id
-AND MatchParticipant.id = ParticipantStats.id
-WHERE (champion_id = :vs_id: AND winner = 0)
-) AS t2
-ON t1.id = t2.id
-WHERE t1.champion_id = :champion_id: AND t2.champion_id = :vs_id:";
+                $vs_phql = "SELECT c1.id as matchId, c1.assigned_id as assignedId, CONCAT(IFNULL(stat.item0,''),' ',IFNULL(stat.item1,''),' ',IFNULL(stat.item2,''),' ',IFNULL(stat.item3,''),' ',IFNULL(stat.item4,''),' ',IFNULL(stat.item5,'')) AS items
+        FROM MatchParticipant c1 
+        JOIN MatchParticipant c2 ON c1.id = c2.id
+        JOIN ParticipantStats stat ON c1.id = stat.id AND c1.player_id = stat.player_id WHERE c1.champion_id = :champion_id: AND c2.champion_id = :vs_id: AND c1.team_id != c2.team_id  AND stat.winner = 1";
 
                 print("Executing query for" . $champion_id . "and" . $vs_id . ": ");
                 print($vs_phql);
