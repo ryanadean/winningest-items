@@ -65,7 +65,7 @@ AND winner = 1";
                     "type" => "overall_item_set",
                     "conditionals" => json_encode(array("champion_id" => $champion_id, "vs_id" => "overall")), 
                     "value" => $winningest_item_set,
-                    "updated_at" => time()
+                    "updated_at" => date("Y-m-d H:I:s")
                 )
             );
             /**
@@ -118,20 +118,16 @@ AND winner = 1";
                 foreach($games as $game)
                 {
                     // Gets item list and sorts
-                    print("Game item list: " . $game->items);
                     $items_as_array = explode(' ', $game->items);
                     sort($items_as_array, SORT_NUMERIC);
                     $game_items = implode(' ', $items_as_array);
-                    print(" [After sort: " . $game_items .  "]");
 
                     // If item set exists then increment, otherwise add in item set
                     if (array_key_exists($game_items, $all_item_sets))
                     {
-                        print("Incremented ");
                         $all_item_sets[$game_items] += 1;
                     }else
                     {
-                        print("Added new ");
                         $all_item_sets += array($game_items => 1);
                     }
                 }
@@ -140,14 +136,13 @@ AND winner = 1";
                 $winningest_item_set = array_search(max($all_item_sets),$all_item_sets);
                 print($winningest_item_set);
 
-                print("Inserting vs item set into CachedData");
                 $vs_item_set = new CachedData();
                 $vs_item_set->save(
                     array(
                         "type" => "vs_item_set",
                         "conditionals" => json_encode(array("champion_id" => $champion_id, "vs_id" => $vs_id)),
                         "value" => $winningest_item_set,
-                        "updated_at" => time()
+                        "updated_at" => date("Y-m-d H:I:s")
                     )
                 );
 
