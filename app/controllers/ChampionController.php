@@ -130,11 +130,12 @@ class ChampionController extends ControllerBase
         $filename = $this->request->getPost("filename");
         $json_string = $this->request->getPost("json_content");
 
-        $this->response->setHeader("Content-Type", "application/json");
-        $this->response->setHeader("Content-Disposition", 'attachment; filename="' . $filename . '"');
-        $this->response->setHeader("Content-Length" , strlen($json_string));
-        $this->response->setContent($json_string);
-        $this->response->send();
+        $response = new \Phalcon\Http\Response();
+        $response->setHeader("Content-Type", "application/json");
+        $response->setHeader("Content-Disposition", 'attachment; filename="' . $filename . '"');
+        $response->setHeader("Content-Length" , strlen($json_string));
+        $response->setContent($json_string);
+        $response->send();
     }
 
     // Action to get the set for champion, then forwards to setAction
