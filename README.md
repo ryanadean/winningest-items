@@ -1,6 +1,8 @@
 # winningest-items
 Riot API Challenge 2.0 Submission
 
+To view a sample of the site please visit: http://108.161.135.24/winningest-items/
+
 App requirements:
 1) mySQL Database with the schema provided. Note - a data collection tool is not provided as part of this submission.
 
