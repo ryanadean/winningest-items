@@ -262,7 +262,7 @@ class ChampionController extends ControllerBase
         );
 
         // Get JSON data and location to be sent to user
-        $filename= $champion_name . "vs" . $item_set . ".json";
+        $filename= $champion_name . "VS" . $item_set . ".json";
         $json_string = json_encode($compiled_item_set); 
         // Send data back to user forwarding through setAction
         $this->dispatcher->forward(array(
