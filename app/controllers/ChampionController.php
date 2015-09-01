@@ -176,13 +176,6 @@ class ChampionController extends ControllerBase
 
         $find_item_set = CachedData::findFirst(
             array(
-                "type = '" . $item_type . "_item_set'",
-                "conditionals = '" . json_encode(array("champion_id" => $champion_id, "vs_id" => $vs_item_id)) . "'"
-            )
-        );
-
-        $find_item_set = CachedData::findFirst(
-            array(
                 "conditionals = '" . json_encode(array("champion_id" => $champion_id, "vs_id" => $vs_item_id)) . "'"
             )
         );
