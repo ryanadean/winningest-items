@@ -9,6 +9,15 @@ class SetsController extends ControllerBase
     {
     }
 
+
+    public function checkSafeModeAction(){
+        if( ini_get('safe_mode') ){
+            print("On");
+        }else{
+            print("Off");
+        }
+    }
+
     // Updates Item and Skill sets for overall option
     public function updateChampionOverallAction()
     {
