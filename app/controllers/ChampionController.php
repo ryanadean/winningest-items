@@ -162,9 +162,13 @@ class ChampionController extends ControllerBase
         $skill_type = ($skill_set == "Overall") ? "overall" : "vs";
         **/
 
-        // Convert all champion names into IDs, to be used for CachedData conditionals
-        $champion_id = Champion::findFirst(array("champion_name" => $champion_name))->champion_id;
-        $vs_item_id = ($item_set == "Overall") ? "overall" : Champion::findFirst(array("champion_name" => $item_set))->champion_id;
+        // Convert champion names into IDs, to be used for CachedData conditionals
+        $champion_result = Champion::findFirst(array("champion_name" => $champion_name));
+        $champion_id = $champion_result->champion_id;
+
+        $item_set_result = Champion::findFirst(array("champion_name" => $item_set));
+        $vs_item_id = ($item_set == "Overall") ? "overall" : $item_set_result->champion_id;
+
         /**
         $vs_skill_id = ($skill_set == "Overall") ? "overall" : Champion::find(array("champion_name" => $skill_set))->champion_id;
         **/
