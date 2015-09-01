@@ -222,18 +222,30 @@ class ChampionController extends ControllerBase
                     "showIfSummonerSpell" => "",
                     "hideIfSummonerSpell" => "",
                     "items" => array(
-                        "id" => "2003",
-                        "count" => 1,
-                        "id" => "3340",
-                        "count" => 1,
-                        "id" => "3341",
-                        "count" => 1,
-                        "id" => "3342",
-                        "count" => 1,
-                        "id" => "2044",
-                        "count" => 1,
-                        "id" => "2043",
-                        "count" => 1
+                        array(
+                            "id" => "2003",
+                            "count" => 1,
+                        ),
+                        array(
+                            "id" => "3340",
+                            "count" => 1,
+                        ),
+                        array(
+                            "id" => "3341",
+                            "count" => 1,
+                        ),
+                        array(
+                            "id" => "3342",
+                            "count" => 1,
+                        ),
+                        array(
+                            "id" => "2044",
+                            "count" => 1,
+                        ),
+                        array(
+                            "id" => "2043",
+                            "count" => 1
+                        )
                     )
                 ),
                 array(
